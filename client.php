@@ -15,6 +15,7 @@ try{
         }
     }else{
         $respuestas = $client->obtenerDepartamentos();
+        //var_dump($respuestas);
     }
 
     $arreglo =array();
@@ -26,12 +27,12 @@ try{
         );
     }
     $arr_headers = getallheaders();
-    if($arr_headers["Accept"] == "aplication/xml"){
+    if($arr_headers["Accept"] == "application/xml"){
         $documento = creaxml("departamento",$arreglo);
-        header("Content-Type: Application/xml");
+        header("Content-Type: application/xml");
         echo($documento);
-    }elseif($arr_headers["Accept"] == "aplication/json"){
-        header("Content-Type: Application/json");
+    }elseif($arr_headers["Accept"] == "application/json"){
+        header("Content-Type: application/json");
         echo(json_encode($respuestas));
     }else{
         echo("ESPECIFIQUE EL FORMATO DE DATOS QUE USTED ESPERA");
