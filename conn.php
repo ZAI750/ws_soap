@@ -11,7 +11,7 @@ class DB extends PDO{
     }
 
     public function run($sql,$args=NULL){
-        if($argc){
+        if(!$argc){
             return $this->query($sql);
         }
         $stmt = $this->prepare($sql);
